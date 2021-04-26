@@ -1,0 +1,22 @@
+{
+  "name": "js-easy",
+  "version": "0.0.2",
+  "description": "a library for easy development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhuqingsong59/js-easy.js.git"
+  },
+  "keywords": [
+    "easy"
+  ],
+  "author": "zqs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhuqingsong59/js-easy.js/issues"
+  },
+  "homepage": "https://github.com/zhuqingsong59/js-easy.js#readme"
+}
