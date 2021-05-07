@@ -1,12 +1,5 @@
-class A {
-  constructor() {
+import cookie from './modules/cookie'
 
-  }
-}
-let a = [1,2,3]
-
-let b = new A()
 export default {
-  a: {...a},
-  b
+  cookie
 }
