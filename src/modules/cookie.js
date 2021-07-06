@@ -1,14 +1,12 @@
 class Cookie {
-  constructor() {
-  }
+  constructor() {}
   set (name, value, day) {
-    // document.cookie = `${key}=${value};Domain=${document.location.hostname};path=/`
     if (day !== 0) { // 当设置的时间等于0时，不设置expires属性，cookie在浏览器关闭后删除
       const expires = day * 24 * 60 * 60 * 1000
       const date = new Date(+new Date() + expires)
-      document.cookie = name + '=' + escape(value) + ';expires=' + date.toUTCString() + ';path=/'
+      document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/'
     } else {
-      document.cookie = name + '=' + escape(value) + ';path=/'
+      document.cookie = name + '=' + value + ';path=/'
     }
   }
   get(name) {
@@ -16,7 +14,7 @@ class Cookie {
     const reg = new RegExp('(^| )' + name + '=([^;]*)(;|$)')
     arr = document.cookie.match(reg)
     if (arr) {
-      return unescape(arr[2])
+      return arr[2]
     } else {
       return null
     }
