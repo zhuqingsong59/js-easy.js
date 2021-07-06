@@ -25,5 +25,4 @@ class Cookie {
     this.set(name, ' ', -1)
   }
 }
-
 export default new Cookie()

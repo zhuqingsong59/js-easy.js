@@ -6,19 +6,39 @@ import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 // rollup 的 babel 插件，ES6转ES5
 import babel from '@rollup/plugin-babel'
+// 文件压缩
+import { terser } from 'rollup-plugin-terser'
+// 开启本地服务
+import serve from 'rollup-plugin-serve'
+// 热更新(刷新浏览器)
+import livereload from 'rollup-plugin-livereload'
+// 替换浏览器端的全局变量
+import replace from 'rollup-plugin-replace'
 
-export default {
+const env = process.env.NODE_ENV
+const config = {
   input: 'src/main.js',
-  output: {
-    file: 'dist/bundle.js',
-    format: 'umd',
-    name: 'jsEasy'
-  },
+  output: [
+    {
+      file: 'dist/bundle.js',
+      format: 'umd',
+      name: 'jsEasy'
+    },
+    {
+      file: 'dist/bundle.min.js',
+      format: 'umd',
+      name: 'jsEasy',
+      plugins: [
+        terser()
+      ]
+    }
+  ],
   watch: {
     exclude: 'node_modules/**'
   },
   plugins: [
     resolve(),
+    replace({'process.env.NODE_ENV': JSON.stringify(env)}),
     commonjs(),
     json(),
     babel({
@@ -27,3 +47,18 @@ export default {
     })
   ]
 }
+if (env === 'dev') {
+  config.plugins.push(
+    serve({
+      open: true, // 自动打开页面
+      port: 8000,
+      openPage: './index.html', // 打开的页面
+      contentBase: ''
+    })
+  )
+  config.plugins.push(
+    livereload('dist')
+  )
+}
+console.log(config.plugins)
+export default config
