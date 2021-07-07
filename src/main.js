@@ -1,4 +1,7 @@
 import cookie from './modules/cookie'
-export default {
+// import regExpUtil from './modules/regExpUtil'
+const jsEasy = {
   cookie
+  // regExpUtil
 }
+export default jsEasy

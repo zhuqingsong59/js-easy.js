@@ -60,5 +60,4 @@ if (env === 'dev') {
     livereload('dist')
   )
 }
-console.log(config.plugins)
 export default config
